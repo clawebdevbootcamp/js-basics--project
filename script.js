@@ -53,10 +53,14 @@ const modal = document.getElementById("modal");
 const fetchStudentsBtn = document.getElementById("fetchStudents");
 const closeBtn = document.getElementsByClassName("closeBtn")[0];
 const students = document.getElementById("students")
-
+const date = document.getElementById("date")
 
 let currentQuiz = 0
 let score = 0
+
+let getDate = new Date(Date.now()).toLocaleString().split(',')[0];
+
+date.innerHTML = getDate
 
 loadQuiz()
 
