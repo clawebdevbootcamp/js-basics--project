@@ -36,6 +36,8 @@ const quizData = [
     }
 ]
 
+let users = []
+
 quizData.push(question);
 
 // Show first question from the quiz when first loading the page
@@ -47,6 +49,11 @@ const c_text = document.getElementById("c_text");
 const d_text = document.getElementById("d_text");
 const submitBtn = document.getElementById("submit")
 const quiz = document.getElementById("quiz");
+const modal = document.getElementById("modal");
+const fetchStudentsBtn = document.getElementById("fetchStudents");
+const closeBtn = document.getElementsByClassName("closeBtn")[0];
+const students = document.getElementById("students")
+
 
 let currentQuiz = 0
 let score = 0
@@ -112,3 +119,44 @@ submitBtn.addEventListener("click", () => {
         console.log("no answer selected!")
     }
 })
+
+// Open modal
+fetchStudentsBtn.onclick = function () {
+    modal.style.display = "block";
+    fetchUsers()
+}
+
+// close the modal
+closeBtn.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+async function fetchUsers() {
+    if (users.length === 0) {
+        //FetchAPI
+        let response = await fetch('https://jsonplaceholder.typicode.com/users')
+        users = await response.json()
+        console.log(users)
+        // Foreach - render students
+        users.forEach(user => {
+            let html = `
+            <div>
+            <p>${user.name}</p>
+            <div class="text-hint">
+            <p>Phone: ${user.phone}</p>
+            <p>Email: ${user.email}</p>
+            </div>
+            </div>
+            <hr>
+            `
+            students.insertAdjacentHTML("afterend", html)
+        });
+    }
+}

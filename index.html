@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Quiz App</title>
         <link rel="stylesheet" href="style.css" />
-        <script src="script.js" defer></script>
+        <script type="module" src="script.js" defer></script>
     </head>
 
     <body>
         <div class="quiz-container" id="quiz">
+            <button id="fetchStudents">Fetch Students</button>
             <div class="quiz-header">
                 <h2 id="question">Question text</h2>
                 <ul>
@@ -34,6 +35,17 @@
             </div>
             <button id="submit">Submit</button>
         </div>
+        <!-- Students Modal -->
+        <div id="modal">
+
+            <!-- Modal content -->
+            <div class="modal__content">
+                <span class="closeBtn">&times;</span>
+                <div>
+                    <h3 id="students">Students:</h3>
+                </div>
+
+            </div>
     </body>
 
 </html>
