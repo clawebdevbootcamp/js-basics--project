@@ -164,3 +164,11 @@ async function fetchUsers() {
         });
     }
 }
+
+
+// Add a countr and disable inputs after time elapsed
+// Change some colors to red when time left = 0
+    // Hints: Make some reset functions to reset the quiz (ex: reset colors from red to default - reset timer - reset score ...)
+// Add new questions:
+    // hint: create new input => grab the value => push it to the array of questions => load quiz again
+// pass more quizzes = one array / quiz
